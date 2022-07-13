@@ -32,12 +32,4 @@ Navigate to Remix.Ethereum.org (You can use the button on OpenZeppelin)
 
 Remix will be what we use to compile and deploy this contract to the blockchain.
 
-License identifier
-
-// SPDX-License-Identifier: MIT
-
-The version(s) of Solidity we will be writing the smart contract for.
-
-pragma solidity ^0.8.4;
-
-
+Refer to Week-001.sol code for notes on this smart contract
