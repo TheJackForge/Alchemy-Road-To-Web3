@@ -17,13 +17,16 @@ import "@openzeppelin/contracts@4.7.0/utils/Counters.sol";
 // This is where we initialize our contract.
 // The "is" keyword is what allows us to inherit certain features from other smart contracts.
 
-contract JForge is ERC721, ERC721Enumerable, ERC721URIStorage, Ownable {
+contract JForge is ERC721, ERC721Enumerable, ERC721URIStorage {
 
     // This is where we initialize the Counters library, which is what will be used to keep track of our NFT IDs.
     using Counters for Counters.Counter;
 
     // The private signifies that this will only be visible and utilized by this smart contract.
     Counters.Counter private _tokenIdCounter;
+
+    // This is a constant variable (use capital letters for constants). This assigns a uint256 of 10000 to the MAX_SUPPLY
+    uint256 MAX_SUPPLY = 10000;
 
     // The constructor is what is creating the instance of our smart contract. We are going to run ERC721() and pass in the parameters of the name and symbol of our smart contract.
     constructor() ERC721("JForge", "JACK") {}
@@ -44,15 +47,24 @@ contract JForge is ERC721, ERC721Enumerable, ERC721URIStorage, Ownable {
 // }
 
     function safeMint(address to, string memory uri) public {
+        // declaring a uint256 variable for tokenId. 
+        // .current() will give us the current number of the tokenId
         uint256 tokenId = _tokenIdCounter.current();
+        // This requires the tokenId to be less than the MAX_SUPPLY of 10000. If it is not, it will revert. The 2nd parameter is the error message that will be output.
+        require(tokenId <= MAX_SUPPLY, "All NFTs have been minted");
+        // This will increment the _tokenIdCounter number.
         _tokenIdCounter.increment();
+        // to = address, tokenId = the token ID given to this NFT
+        // _safeMint is a built in function from the library that will create a new NFT on the blockchain and send the NFT to the "to" address.
         _safeMint(to, tokenId);
+        // This will assign the TokenURI to the NFT
         _setTokenURI(tokenId, uri);
     }
 
     // The following functions are overrides required by Solidity.
 
     function _beforeTokenTransfer(address from, address to, uint256 tokenId)
+        // internal is similar to private but contracts that inherit from this contract can access this function
         internal
         override(ERC721, ERC721Enumerable)
     {
@@ -65,6 +77,7 @@ contract JForge is ERC721, ERC721Enumerable, ERC721URIStorage, Ownable {
 
     function tokenURI(uint256 tokenId)
         public
+        // view function modifier means that this function is only reading from the blockchain
         view
         override(ERC721, ERC721URIStorage)
         returns (string memory)

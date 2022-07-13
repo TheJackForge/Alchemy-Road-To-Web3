@@ -1,0 +1,20 @@
+{
+  "description": "This NFT proves that I have deployed an ERC721 Smart Contract on Rinkeby", 
+  "external_url": "https://alchemy.com", 
+  "image": "https://ipfs.filebase.io/ipfs/QmNfvdYEGQA9AM5mSKXRHzJz2GA8nwSxpAs75DuJvdQs2F", 
+  "name": "ERC721 PoK",
+  "attributes": [
+        {
+        "trait_type": "Coolness", 
+        "value": "Alot"
+        }, 
+        {
+        "trait_type": "Website", 
+        "value": "Alchemy.com"
+        }, 
+        {
+        "trait_type": "Token Standard", 
+        "value": "ERC721"
+        }
+    ]
+}

@@ -33,3 +33,17 @@ Navigate to Remix.Ethereum.org (You can use the button on OpenZeppelin)
 Remix will be what we use to compile and deploy this contract to the blockchain.
 
 Refer to Week-001.sol code for notes on this smart contract
+
+After the smart contract is built and modified with the changes from the video, create/log into your Alchemy account.
+
+Create a new project and add all necessary details.
+
+Copy the HTTP URL from the Keys section
+
+Open metamask and add the Alchemy Rinkeby RPC
+
+Go to rinkebyfaucet.com and request test ETH 
+
+Open remix and compile the smart contract
+
+Deploy this smart contract to Rinkeby through Injected Web3
