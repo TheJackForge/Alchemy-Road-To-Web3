@@ -47,3 +47,35 @@ Go to rinkebyfaucet.com and request test ETH
 Open remix and compile the smart contract
 
 Deploy this smart contract to Rinkeby through Injected Web3
+
+Once your contract is deployed through Remix, click on the Deployed Contracts dropdown.
+
+Orange = Writing to the blockchain
+
+Blue = Reading from the blockchain
+
+Now we need to create our NFT metadata
+
+Go to the OpenSea MetaData standards page (https://docs.opensea.io/docs/metadata-standards) and copy the Metadata structure.
+
+Paste the metadata structure into a text editor, edit the description and URL.
+
+Now we will upload the image through filebase.com
+
+Log into Filebase, Click on buckets, and create a new bucket
+
+Upload the photo you would like to use
+
+Edit the metadata in your json file to whatever you would like - make sure to include a link to the img you just uploaded.
+
+Go back to filebase and we will need to upload this data.
+
+Upload the json metadata to filebase
+
+Once this uploaded, copy the IPFS CID
+
+Go to remix and paste the IPFS CID into the safemint function along with
+your wallet address. Click transact and mint to the blockchain.
+
+You can check if it was successful by pasting your address into the balanceOf field. This will tell you how many NFTs you have in your wallet. In this case it should return a uint of 1.
+
