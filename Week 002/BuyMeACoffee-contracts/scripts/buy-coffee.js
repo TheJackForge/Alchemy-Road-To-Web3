@@ -32,4 +32,45 @@ async function printMemos(memos) {
 async function main() {
     // Get the example accounts we will be working with.
     const [owner, tipper, tipper2, tipper3] = await hre.ethers.getSigners();
+
+    // We get the contract to deploy
+    const BuyMeACoffee = await hre.ethers.getContractFactory("BuyMeACoffee");
+    const buyMeACoffee = await BuyMeACoffee.deploy();
+
+    // Deploy the Contract
+    await buyMeACoffee.deployed();
+    console.log("BuyMeACoffee deployed to:", buyMeACoffee.address)
+    console.log("== START ==");
+    await printBalances(addresses);
+
+    // Buy the owner a few coffees
+    const tip = {value: hre.ethers.utils.parseEther("1")};
+    await buyMeACoffee.connect(tipper).buyCoffee("Carolina", "You're the best!", tip);
+    await buyMeACoffee.connect(tipper2).buyCoffee("Vitto", "Amazing teacher!", tip);
+    await buyMeACoffee.connrect(tipper3).buyCofee("Kay", "I love my PoK!", tip);
+
+    // Check balances after the coffee purchases
+    console.log("== BOUGHT COFFEE ==");
+    await printBalances(addresses);
+
+    // Withdraw
+    await buyMeACoffee.connect(owner).withdrawTips();
+
+    // Check balances after withdrawal
+    console.log("== WITHDRAW TIPS ==");
+    await printBalances(balances);
+
+    // Check out the memos
+    console.log("== MEMOS ==");
+    const memos = await buyMeACoffee.getMemos();
+    printMemos(memos);
 }
+
+// We recommend this pattern to be able to use async/await everywhere
+// and properly handle errors.
+main()
+  .then(() => process.exit(0))
+  .catch((error) => {
+    console.error(error);
+    process.exit(1);
+  });
