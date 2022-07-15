@@ -78,5 +78,26 @@ contract BuyMeACoffee {
     function withdrawTips() public {
         require(owner.send(address(this).balance));
     }
-    
+
 }
+
+// CONTRACT HIGHLIGHTS
+
+// When we deploy the contract, the constructor saves the address of the wallet that was responsible for deploying inside an owner variable as a payable address. This is useful for later when we want to withdraw any tips collected by the contract.
+
+// The buyCoffee function is the most important function on the contract. It accepts two strings, a _name, and a _message, and it also accepts ether due to the payable modifier. It uses the _name and _message inputs to create a Memo struct that is stored on the blockchain.
+
+// When visitors call the buyCoffee function, they must submit some ether due to the require(msg.value > 0) statement. The ether is then held on the contract balance until it is withdrawn.
+
+// The memos array holds all of the Memo structs generated from coffee purchases.
+
+// NewMemo log events are emitted every time a coffee is purchased. This allows us to listen for new coffee purchases from our frontend website.
+
+// withdrawTips is a function that anyone can call, but will only ever send money to the original deployer of the contract.
+
+// address(this).balance fetches the ether stored on the contract
+
+// owner.send(...) is the syntax for creating a send transaction with ether
+
+// the require(...) statement that wraps everything is there to ensure that if there are any issues, the transaction is reverted and nothing is lost
+// that's how we get require(owner.send(address(this).balance))
