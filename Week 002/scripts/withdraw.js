@@ -20,11 +20,16 @@ async function main() {
     // script will fail with an error.
     const signer = new hre.ethers.Wallet(process.env.PRIVATE_KEY, provider);
 
+    // Adding alternative owner to withdrawals
+
+    const alternativeAddress = new hre.ethers.Wallet(process.env.ALTERNATIVE_ADDRESS, provider)
+
     // Instantiate the connected contract
     const buyMeACoffee = new ethers.Contract(contractAddress, contractABI, signer );
 
     // Check starting balances
     console.log("current balance of owner: ", await getBalance(provider, signer.address), "ETH");
+    console.log("current balance of alternative owner: ", await getBalance(provider, alternativeAddress.address), "ETH")
     const contractBalance = await getBalance(provider, buyMeACoffee.address);
     console.log("current balance of contract: ", await getBalance(provider, buyMeACoffee.address), "ETH");
 
@@ -39,6 +44,7 @@ async function main() {
 
     // Check ending balance
     console.log("Current balance of owner: ", await getBalance(provider, signer.address), "ETH");
+    console.log("Current balance of alternative address", await getBalance(provider, alternativeAddress.address), "ETH");
 }
 
 main()
