@@ -1,9 +1,12 @@
 {
   "dependencies": {
     "@openzeppelin/contracts": "^4.7.0",
+    "dotenv": "^16.0.1",
     "hardhat": "^2.10.1"
   },
   "devDependencies": {
-    "@nomicfoundation/hardhat-toolbox": "^1.0.2"
+    "@nomicfoundation/hardhat-toolbox": "^1.0.2",
+    "@nomiclabs/hardhat-waffle": "^2.0.3",
+    "ethereum-waffle": "^3.4.4"
   }
 }

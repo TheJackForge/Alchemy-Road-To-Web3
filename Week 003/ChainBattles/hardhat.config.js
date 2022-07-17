@@ -1,6 +1,6 @@
 require("dotenv").config();
-require("@nomicfoundation/hardhat-waffle");
-require("@nomicfoundation/hardhat-etherscan");
+require("@nomiclabs/hardhat-waffle");
+require("@nomiclabs/hardhat-etherscan");
 
 module.exports = {
   solidity: "0.8.10",
