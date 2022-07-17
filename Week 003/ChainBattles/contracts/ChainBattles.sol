@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
-// Contract Address: 0xe378e73627f72Bd9506f5d9cF178Ce20F60c3EB4
+// Contract Address: 0xe4e3bb7a24b021e6B5aA13903D9f51C8Ff2C3437
 
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
 import "@openzeppelin/contracts/utils/Counters.sol";
@@ -31,11 +31,11 @@ contract ChainBattles is ERC721URIStorage  {
         '<svg xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMinYMin meet" viewBox="0 0 350 350">',
         '<style>.base { fill: white; font-family: serif; font-size: 14px; }</style>',
         '<rect width="100%" height="100%" fill="black" />',
-        '<text x="50%" y="40%" class="base" dominant-baseline="middle" text-anchor="middle">',"Ice Mage",'</text>',
-        '<text x="50%" y="50%" class="base" dominant-baseline="middle" text-anchor="middle">', "Levels: ",getLevel(tokenId),'</text>',
-        '<text x="50%" y="50%" class="base" dominant-baseline="middle" text-anchor="middle">', "Levels: ",getSpeed(tokenId),'</text>',
-        '<text x="50%" y="50%" class="base" dominant-baseline="middle" text-anchor="middle">', "Levels: ",getStrength(tokenId),'</text>',
-        '<text x="50%" y="50%" class="base" dominant-baseline="middle" text-anchor="middle">', "Levels: ",getLife(tokenId),'</text>',
+        '<text x="50%" y="30%" class="base" dominant-baseline="middle" text-anchor="middle">',"Chain Battler",'</text>',
+        '<text x="50%" y="40%" class="base" dominant-baseline="middle" text-anchor="middle">', "Level: ",getLevel(tokenId),'</text>',
+        '<text x="50%" y="50%" class="base" dominant-baseline="middle" text-anchor="middle">', "Speed: ",getSpeed(tokenId),'</text>',
+        '<text x="50%" y="60%" class="base" dominant-baseline="middle" text-anchor="middle">', "Strength: ",getStrength(tokenId),'</text>',
+        '<text x="50%" y="70%" class="base" dominant-baseline="middle" text-anchor="middle">', "Life: ",getLife(tokenId),'</text>',
         '</svg>'
     );
     return string(
@@ -88,9 +88,9 @@ contract ChainBattles is ERC721URIStorage  {
     _safeMint(msg.sender, newItemId);
     Stats storage _stats = tokenIdToStats[newItemId];
     _stats.level = 0;
-    _stats.speed = 0;
-    _stats.strength = 0;
-    _stats.life = 0;
+    _stats.speed = 420;
+    _stats.strength = 69;
+    _stats.life = 181;
     _setTokenURI(newItemId, getTokenURI(newItemId));
     }
 
