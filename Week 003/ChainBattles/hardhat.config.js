@@ -1,6 +1,6 @@
 require("dotenv").config();
-require("@nomiclabs/hardhat-waffle");
-require("@nomiclabs/hardhat-etherscan");
+require("@nomicfoundation/hardhat-waffle");
+require("@nomicfoundation/hardhat-etherscan");
 
 module.exports = {
   solidity: "0.8.10",
@@ -14,3 +14,4 @@ module.exports = {
     apiKey: process.env.POLYGONSCAN_API_KEY
   }
 };
+
